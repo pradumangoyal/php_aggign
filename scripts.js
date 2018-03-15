@@ -145,7 +145,9 @@ error:function (){}
 
 function checkform(){
  var d =(a && unameval() && nameval() && repval() && pval() && eval() && genval() && ageval() &&  phoneval());
- if(d==0) d=false;
+ if(d==0) {d=false;
+ alert("Dont Try to Mess With me!! Already this PHP Assignment Fu**s me!!PLEASE!!");
+ }
  console.log(d);
  return d;
 

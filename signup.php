@@ -2,6 +2,8 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
 <title>FORM-VALIDATION</title>
 <link href="./style.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -9,7 +11,7 @@
 <body>
 <fieldset>
 <legend>SIGN-UP</legend>
-<form name="my_form" id="my_form" action="h.php" onsubmit="return checkform()">
+<form name="my_form" id="my_form" action="signupaction.php" onsubmit="return checkform()" method="post">
 <tr><td><span id="key">Username: </span></td><td>
 <input name="uname" type=text placeholder="Enter a Username" onkeyup="check()" id="uname" onChange="unameval()" required></td><td>
 <span id="user-availability-status"></span></td><td>
@@ -24,7 +26,7 @@
 <span id="phone-error" class="error"></span>
 <BR>
 <span id="key">Age:</span>
-<input name="phone" type=text placeholder="Enter Your Age" onchange="ageval()" id="age" required>
+<input name="age" type=text placeholder="Enter Your Age" onchange="ageval()" id="age" required>
 <span id="age-error" class="error"></span>
 <BR>
 <span id="key">Gender:</span>
@@ -32,7 +34,7 @@
 <span id="gender-error" class="error"></span>
 <BR>
 <span id="key">E-mail: </span>
-<input name="E-mail" type=text placeholder="Enter Your E-mail" onchange="eval()" id="email" required>
+<input name="email" type=text placeholder="Enter Your E-mail" onchange="eval()" id="email" required>
 <span id="email-error" class="error"></span>
 <BR>
 <span id="key">Password: </span>
