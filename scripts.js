@@ -1,5 +1,5 @@
 console.log("opened");
-var a =0;
+a =0;
 
 
 function phoneval() {
@@ -75,6 +75,7 @@ function pval()
   if(pass!=="")
   {
     document.getElementById("pwd-error").innerHTML = "<img src='./correct.png' style='width: 20px; height: 20px;'>";
+ return true;
   }
 
 }
@@ -84,15 +85,19 @@ function repval()
   var repass=document.getElementById("r-pwd").value;
   if(pass==""){
     document.getElementById("pwd-error").innerHTML = "<img src='./wrong.png' style='width: 20px; height: 20px;'>Please Enter a Password";
+ return false;
   }
   else if(pass!==repass){
     document.getElementById("pwd-error").innerHTML = "<img src='./wrong.png' style='width: 20px; height: 20px;'>";
     document.getElementById("rpwd-error").innerHTML = "<img src='./wrong.png' style='width: 20px; height: 20px;'>Password Doesn't Match";
+   return false;
   }
   else{
     document.getElementById("pwd-error").innerHTML = "<img src='./correct.png' style='width: 20px; height: 20px;'>";
     document.getElementById("rpwd-error").innerHTML = "<img src='./correct.png' style='width: 20px; height: 20px;'>";
+    return true;
   }
+
 }
 
 function nameval() {
@@ -125,21 +130,6 @@ function unameval() {
   }
 
 }
-function cityval() {
-
-  var name = document.getElementById("city").value;
-  var nameregex=/^[A-Za-z\s]{1,}$/i;
-  if(!nameregex.test(name))
-  {
-    document.getElementById("city-error").innerHTML = "<img src='./wrong.png' style='width: 20px; height: 20px;'>Please Enter a Valid City Name";
-    return false;
-  }
-  else{
-    document.getElementById("city-error").innerHTML = "<img src='./correct.png' style='width: 20px; height: 20px;'>";
-    return true;
-  }
-
-}
 
 function check() {
 jQuery.ajax({
@@ -152,4 +142,12 @@ $("#user-availability-status").html(data);
 error:function (){}
 });
 }
-console.log(a);
+
+function checkform(){
+ var d =(a && unameval() && nameval() && repval() && pval() && eval() && genval() && ageval() &&  phoneval());
+ if(d==0) d=false;
+ console.log(d);
+ return d;
+
+  }
+
