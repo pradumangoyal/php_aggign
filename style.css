@@ -1,0 +1,31 @@
+#key{
+  margin-right: 5px;
+  margin-top: 5px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: left;
+}
+form{
+  font-size: 20px;
+  text-align: left;
+}
+select, input{
+height: 30px;
+        font-size: 20px;
+border: 1px solid #009688;
+        margin-top: 20px;
+}
+select:selected, input{
+border: 1px solid #1DE9B6;  
+       }
+option{
+  font-size: 20px;
+}
+option:hover{
+         background-color: #B2FDB;
+       }
+.error{
+color: red;
+       margin-left: 5px;
+       font-size: 15px;
+
+}
