@@ -10,7 +10,7 @@
    <fieldset>
        <legend align="left">Login</legend>
        <div class="loginsec container">
-       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+       <form method="post" action="loginaction.php">
          <input name="username" type="text" placeholder="Username/Email" id="username" value="<?php echo $_COOKIE["member_login"] ?>">
          <input name="password" type="password" placeholder="Password" id="password" value="<?php echo $_COOKIE["member_password"] ?>"><br>
          <input type="checkbox" name="remember" id="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />
@@ -18,7 +18,7 @@
          </form>
        </div>
      </fieldset>
-   <?php 
+   <?php /*
    include('connect.php');
   // Check connection
           if ($conn->connect_error) {
@@ -50,27 +50,8 @@
                          if(!empty($_POST["login"])) {
                          $_SESSION["id"]=$row["id"];
                          if(!empty($_POST["remember"])){
-                           setcookie("member_login",$name,time()+(10 * 365 * 24 * 60 * 60));
-                           setcookie ("member_password",$_POST["password"],time()+ (10 * 365 * 24 * 60 * 60));
-                             } else{
-                                 if(isset($_COOKIE["member_login"])) {
-                                          setcookie ("member_login","");
-                                                  }
-                                  if(isset($_COOKIE["member_password"])) {
-                                           setcookie ("member_password","");
-                                                  }
-                            }
-         }
-         $pass_db=$row["passkey"];
                }}
-
-        if($pass_db==crypt($pass_input,'$5$rounds=5000$sociobook_2018$'))
-{echo '<script>alert("hello")</script>';
-        echo '<script>alert($_COOKIE)</script>';}
-        else
-       echo '<script>alert("bye")</script>';
-       echo '<script>alert($_COOKIE)</script>';
-         ?>
+        */ ?>
         <script>console.log("hello2")</script>;
       
 

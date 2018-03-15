@@ -39,13 +39,13 @@
          $data = htmlspecialchars($data);
          return $data;
          }
-         $pwd=crypt($pwd,'$5$rounds=5000$sociobook_2018$');
+         $pass=crypt($pass,'$5$rounds=5000$sociobook_2018$');
           $sql = "insert into sociobook_gen(username,email,gender,mobile,name,age) values('$uname','$email','$gender','$phone','$name','$age')";
           $result = $conn->query($sql);
           if ($result === TRUE) {
             echo "DATA UPLOADED";
           }
-         $sql = "insert into sociobook_passkeys(username,email,passkey) values('$uname','$email','$pwd')";
+         $sql = "insert into sociobook_passkeys(username,email,passkey) values('$uname','$email','$pass')";
           $result = $conn->query($sql);
           if ($result === TRUE) {
             echo "Passkey Updated";
