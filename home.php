@@ -7,10 +7,8 @@ if(!isset($_SESSION["admin_name"]))
 ?>
 <html>
 <head>
-<title>Webslesson - Tutorial</title>
+<title>SOCIO-BOOK</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
 <style>
 body
 {
@@ -27,7 +25,7 @@ padding:20px;
 </style>
 </head>
 <body>
-<div class="container box">
+<div class="box">
 <h3 align="center">Welcome - <?php echo $_SESSION["admin_name"]; ?></h3>
 <br />
 <p><a href="logout.php">Logout</a></p>
