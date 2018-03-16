@@ -8,12 +8,10 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
          }
-         echo "Hello";
 session_start();
 if(isset($_SESSION["admin_name"]))
 {
 $uname=$_SESSION["admin_name"];
-echo $uname;
 include("connect.php");
 $sql="use first_year_db";
 if($conn->query($sql) === TRUE){}
@@ -102,6 +100,7 @@ padding:20px;
 <BR>
 <input type="submit" value="UPDATE" name="submit">
 </form>
+<a href="index.php"><button>Go Back</button></a>
 </fieldset>
 <br />
 </div>

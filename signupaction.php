@@ -49,6 +49,7 @@
           $result = $conn->query($sql);
           if ($result === TRUE) {
             echo "Passkey Updated";
+         header('Location: index.php');
           }
          
          ?>

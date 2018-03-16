@@ -116,8 +116,9 @@ padding:0;
 }
 .box
 {
-width:100vw;
-        background-color:#fff;
+box-sizing: border-box;
+width:99vw;
+background-color:#fff;
 }
 .profile{
 position:relative;
@@ -127,6 +128,7 @@ top: -50px;
 left: 50px;
 }
 .uname, .desc{
+  box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-size: 40px;
   font-weight: 700;
@@ -134,9 +136,9 @@ left: 50px;
 }
 .desc{
 border: 1px solid black;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 50px;
+font-size: 20px;
+text-align: center;
+margin-top: 50px;
 padding: 10px;
 }
 a{
@@ -156,7 +158,7 @@ color: black;
 <br />
 <form action="http://192.168.121.187:8001/php_assign/pg/home.php" method="post" enctype="multipart/form-data">
 Select Profile Photo to upload:
-<input type="file" name="fileToUpload" id="fileToUpload">
+<input type="file" name="fileToUpload" id="fileToUpload" value="Choose Profile Pic">
 <input type="submit" value="Upload Profile Pic" name="submit">
 </form>
 <form action="http://192.168.121.187:8001/php_assign/pg/home.php" method="post" enctype="multipart/form-data">
@@ -165,7 +167,7 @@ Select Cover Photo to upload:
 <input type="file" name="fileToUploa" id="fileToUploa">
 <input type="submit" value="Upload Cover Photo" name="submitc">
 </form>
-<p><a href="updatepass.php"><button>Update Password</button></a>   <a href="updateprofile.php"><button>Update Profile</button></a> <a href="logout.php"><button>Logout</button></a></p>
+<p><a href="updatepass.php"><button>Update Password</button></a>   <a href="updateprofile.php"><button>Update Profile</button></a>    <a href="commonfeed.php"><button>Common Feed</button></a> <a href="logout.php"><button>Logout</button></a></p>
 </div>
 </body>
 </html>

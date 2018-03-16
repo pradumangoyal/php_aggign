@@ -66,7 +66,10 @@ padding:0;
 width:700px;  
 padding:20px;  
         background-color:#fff;  
-}  
+}
+h2{
+  font-family: "Comic Sans MS";
+}
 </style>  
 </head>  
 <body>  
@@ -91,6 +94,7 @@ padding:20px;
 </div>   
 </form>  
 <br />  
+<h2>Don't Have an account? <a href="signup.php">Create</a> one here because its free</h2>
 </div>  
 </body>  
 </html>
