@@ -14,9 +14,9 @@ if(isset($_POST["login"]))
   {
     $name = mysqli_real_escape_string($conn, $_POST["member_name"]);
     $hash = session_id();
-    echo $hash;
+    echo $name.$hash;
     $password = crypt(mysqli_real_escape_string($conn, $_POST["member_password"]),'$5$rounds=5000$sociobook_2018$');
-    $sql = "Insert into sociobook_hashes values('".$hash."','".$name."');";
+    $sql = "Insert into sociobook_hashes(hash,name) values('".$hash."','".$name."');";
     $result = mysqli_query($conn,$sql);
     $sql = "Select * from sociobook_passkeys where username = '" . $name . "' and passkey = '" . $password . "'";  
     $result = mysqli_query($conn,$sql);  
@@ -79,7 +79,7 @@ h2{
 <div>  
 <label for="login">Username</label>  
 <input name="member_name" type="text" value="<?php if(isset($_COOKIE["member_login"])) { 
-$sql = "SELECT name FROM sociobook_hashes where hash='".$_COOKIE["member_login"]."'";
+$sql = "SELECT name FROM sociobook_hashes where hash='".$_COOKIE["member_login"]."' order by id desc";
 $result = $conn->query($sql);
 if($row = $result->fetch_assoc()) { }
  echo $row['name'];} ?>" />  
