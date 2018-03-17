@@ -13,9 +13,10 @@ if(isset($_POST["login"]))
   if(!empty($_POST["member_name"]) && !empty($_POST["member_password"]))
   {
     $name = mysqli_real_escape_string($conn, $_POST["member_name"]);
-    $namehash=crypt($name,'$5$rounds=5000$sociobook_2018$');
+    $hash = session_id();
+    echo $hash;
     $password = crypt(mysqli_real_escape_string($conn, $_POST["member_password"]),'$5$rounds=5000$sociobook_2018$');
-    $sql = "Insert into sociobook_hashes values('".$namehash."','".$name."');";
+    $sql = "Insert into sociobook_hashes values('".$hash."','".$name."');";
     $result = mysqli_query($conn,$sql);
     $sql = "Select * from sociobook_passkeys where username = '" . $name . "' and passkey = '" . $password . "'";  
     $result = mysqli_query($conn,$sql);  
@@ -25,8 +26,7 @@ if(isset($_POST["login"]))
       $_SESSION["admin_name"] = $name;
       if(!empty($_POST["remember"]))   
       {  
-        setcookie ("member_login",$namehash,time()+ (10 * 365 * 24 * 60 * 60));  
-        setcookie ("member_password",$password,time()+ (10 * 365 * 24 * 60 * 60));
+        setcookie ("member_login",$hash,time()+ (10 * 365 * 24 * 60 * 60));  
         $_SESSION["admin_name"] = $name;
       }  
       else  
@@ -34,11 +34,7 @@ if(isset($_POST["login"]))
         if(isset($_COOKIE["member_login"]))   
         {  
           setcookie ("member_login","");  
-        }  
-        if(isset($_COOKIE["member_password"]))   
-        {  
-          setcookie ("member_password","");  
-        }  
+        }    
       }  
       header("location:home.php"); 
     }  
@@ -90,7 +86,7 @@ if($row = $result->fetch_assoc()) { }
 </div>  
 <div>  
 <label for="password">Password</label>  
-<input name="member_password" type="password" value="<?php if(isset($_COOKIE["member_password"])) { echo $_COOKIE["member_password"]; } ?>" />   
+<input name="member_password" type="password" value="" />   
 </div>  
 <div>  
 <input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> id="rem"/>  
