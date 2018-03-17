@@ -29,7 +29,10 @@ $name=$phone=$age=$gender=$email=$branch=$interest="";
               $branch = test_input($_POST["branch"]);
               $interest = test_input($_POST["interest"]);
 /* echo "update sociobook_gen SET email='".$email."' , gender='".$gender."' , mobile='".$phone."' , name='".$name."' , age='".$age."' , branch='".$branch."' , interest='".$interest."' where username='".$uname."'";
-*/  $sql = "update sociobook_gen SET email='".$email."' , gender='".$gender."' , mobile='".$phone."' , name='".$name."' , age='".$age."' , branch='".$branch."' , interest='".$interest."' where username='".$uname."';";
+*/ 
+              if(preg_match('/^[A-Za-z\s0-9\_]{1,}$/i',$uname) && preg_match('/^([\w-]+(\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,})\.([a-z]{2,}(\.[a-z]{2})?)$/i',$email) && preg_match('/^(0|91|\+91){0,1}[\-\s\.]{0,1}[7-9]{1}[0-9]{4}[-\s\.]{0,1}[0-9]{5}$/ ' ,$phone) && preg_match('/^[A-Za-z\s]{1,}$/i', $name) && preg_match('/^[0-9]{1,2}$/',$age) && preg_match('/^(male|female)$/ ',$gender) && preg_match('/^[A-Za-z\s]{1,}$/i', $branch) &&   preg_match('/^[A-Za-z\s]{1,}$/i', $interest))
+              {
+              $sql = "update sociobook_gen SET email='".$email."' , gender='".$gender."' , mobile='".$phone."' , name='".$name."' , age='".$age."' , branch='".$branch."' , interest='".$interest."' where username='".$uname."';";
           if ($conn->query($sql) === TRUE) {
             alert("DATA UPLOADED");
             header('Location: index.php');
@@ -38,7 +41,9 @@ $name=$phone=$age=$gender=$email=$branch=$interest="";
           }
 
 }
-}
+else
+echo "Profile Not Updated Check Validations!!<a href='index.php'>Jump Back to the Main Page!</a>";
+}}
 else{
 header('Location: index.php');
 }

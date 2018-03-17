@@ -93,8 +93,8 @@ if($row = $result->fetch_assoc()) { }
 <input name="member_password" type="password" value="<?php if(isset($_COOKIE["member_password"])) { echo $_COOKIE["member_password"]; } ?>" />   
 </div>  
 <div>  
-<input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />  
-<label for="remember-me">Remember me</label>  
+<input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> id="rem"/>  
+<label for="rem">Remember me</label>  
 </div>  
 <div>  
 <div><input type="submit" name="login" value="Login" ></span></div>  
