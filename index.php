@@ -13,7 +13,10 @@ if(isset($_POST["login"]))
   if(!empty($_POST["member_name"]) && !empty($_POST["member_password"]))
   {
     $name = mysqli_real_escape_string($conn, $_POST["member_name"]);
+    $namehash=crypt($name,'$5$rounds=5000$sociobook_2018$');
     $password = crypt(mysqli_real_escape_string($conn, $_POST["member_password"]),'$5$rounds=5000$sociobook_2018$');
+    $sql = "Insert into sociobook_hashes values('".$namehash."','".$name."');";
+    $result = mysqli_query($conn,$sql);
     $sql = "Select * from sociobook_passkeys where username = '" . $name . "' and passkey = '" . $password . "'";  
     $result = mysqli_query($conn,$sql);  
     $user = mysqli_fetch_array($result);  
@@ -22,7 +25,7 @@ if(isset($_POST["login"]))
       $_SESSION["admin_name"] = $name;
       if(!empty($_POST["remember"]))   
       {  
-        setcookie ("member_login",$name,time()+ (10 * 365 * 24 * 60 * 60));  
+        setcookie ("member_login",$namehash,time()+ (10 * 365 * 24 * 60 * 60));  
         setcookie ("member_password",$password,time()+ (10 * 365 * 24 * 60 * 60));
         $_SESSION["admin_name"] = $name;
       }  
@@ -79,7 +82,11 @@ h2{
 <div><?php if(isset($message)) { echo $message; } ?></div>  
 <div>  
 <label for="login">Username</label>  
-<input name="member_name" type="text" value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" />  
+<input name="member_name" type="text" value="<?php if(isset($_COOKIE["member_login"])) { 
+$sql = "SELECT name FROM sociobook_hashes where hash='".$_COOKIE["member_login"]."'";
+$result = $conn->query($sql);
+if($row = $result->fetch_assoc()) { }
+ echo $row['name'];} ?>" />  
 </div>  
 <div>  
 <label for="password">Password</label>  
