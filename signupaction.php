@@ -41,12 +41,14 @@
          return $data;
          }
          $pass=crypt($pass,'$5$rounds=5000$sociobook_2018$');
-          $sql = "insert into sociobook_gen(username,email,gender,mobile,name,age) values('$uname','$email','$gender','$phone','$name','$age')";
-          $result = $conn->query($sql);
-          if ($result === TRUE && preg_match('/^[A-Za-z\s0-9\_]{1,}$/i' ,$uname) && preg_match('/^([\w-]+(\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,})\.([a-z]{2,}(\.[a-z]{2})?)$/i',$email ) && preg_match('/^(0|91|\+91){0,1}[\-\s\.]{0,1}[7-9]{1}[0-9]{4}[-\s\.]{0,1}[0-9]{5}$/ ' ,$phone) && preg_match('/^[A-Za-z\s]{1,}$/i ' , $name) && preg_match('/^[0-9]{1,2}$/ ' , $age) && preg_match('/^(male|female)$/ ' ,$gender) && $pass!="" && $pass==$rpass )  {
-            echo "DATA UPLOADED";
+          $rpass=crypt($rpass,'$5$rounds=5000$sociobook_2018$');
+         
+          if (preg_match('/^[A-Za-z\s0-9\_]{1,}$/i' ,$uname) && preg_match('/^([\w-]+(\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,})\.([a-z]{2,}(\.[a-z]{2})?)$/i',$email ) && preg_match('/^(0|91|\+91){0,1}[\-\s\.]{0,1}[7-9]{1}[0-9]{4}[-\s\.]{0,1}[0-9]{5}$/ ' ,$phone) && preg_match('/^[A-Za-z\s]{1,}$/i ' , $name) && preg_match('/^[0-9]{1,2}$/ ' , $age) && preg_match('/^(male|female)$/ ' ,$gender) && $pass!="" && $pass==$rpass )  {
+         $sql = "insert into sociobook_gen(username,email,gender,mobile,name,age) values('$uname','$email','$gender','$phone','$name','$age')";
+         $result = $conn->query($sql); 
          $sql = "insert into sociobook_passkeys(username,email,passkey) values('$uname','$email','$pass')";
-          $result = $conn->query($sql);
+         if($result === TRUE){echo "Data Uploaded";}
+         $result = $conn->query($sql);
           if ($result === TRUE) {
             echo "Passkey Updated";
          header('Location: index.php');
