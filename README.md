@@ -1,3 +1,2 @@
 # php_aggign
-This Reepo will Contain MY PHP assignement which i have to compelete in 3-4 dats. It contains nothing special so dont peep in it and move forward. 
--Praduman Goyal
+Socioconnect: This basically performs basic operations one can do using PHP+MySql, SignUp with proper valodations and then login to your account which shows you your details you can update your details and password and can change your profile picture and cover photo. Contains a common feed page where you can post and listen what world is posting there.
